@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% if title %}{{title}}{% else %}Удаление новой страцины{% endif %}
+</title>
+</head>
+
+<body>
+<h1>Вы действительно хотите уничтожить запись</h1>
+<table>
+<form action="" method="POST">{% csrf_token %}
+
+<tr>
+<td>
+<h2>Заголовок</h2>
+</td>
+<td>{{title}}</td>
+</tr>
+<tr>
+<td>
+<h2>Контент</h2>
+</td>
+<td>
+{{text}}
+</td>
+</tr>
+<tr><td><input type="submit" name="Yes" value="Да, удалить запись"/></td><td><input name="No" type="submit" value="Нет, вернуться к просмотру страницы"/></td></tr>
+</form>
+</table>
+</body>
+</html>

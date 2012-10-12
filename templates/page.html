@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+     h1,h2,h3,h4,h5,p {margin:5px;padding:0;}
+    .menu {margin: 0; padding: 4px; list-style:none;}
+    .menu li{ display: inline; margin-right: 5px; padding: 5px; }
+	.red:link     { text-decoration: none; color: #FF0000;}
+	.red:visited  { text-decoration: none; color: #FF0000;}
+	.red:hover    { text-decoration: none; color: #FF0000;}
+	.red:active   { text-decoration: none; color: #FF0000;}
+	
+	.blue:        { text-decoration: none; color: #0000FF;}
+	.blue:link    { text-decoration: none; color: #0000FF;}
+	.blue:visited { text-decoration: none; color: #0000FF;}
+	.blue:hover   { text-decoration: none; color: #0000FF;}
+	.blue:active  { text-decoration: none; color: #0000FF;}
+</style>
+<title>{{page.title}}</title>
+</head>
+<body>
+<h1>{{page.title}}</h1>
+{% load markup %}
+{{page.text|linebreaks|wiki_markup}}
+
+{% if p_referense %}
+<hr />
+<h4>Родительская страница</h4>
+
+<p>
+<a href="{{p_referense.page.get_absolute_url}}">{{p_referense}}</a>
+</p>
+{% endif %}
+
+{% if child_referense %}
+<hr />
+<h4>Дочерние страницы</h4>
+{% for i in child_referense %}
+	<p><a href="{{ i.child.get_absolute_url }}">{{ i.child.title }}</a></p>
+{% endfor %}
+{% endif %}
+<hr />
+<ul class="menu">
+<li><a href='add/' > Добавить страницу</a></li>
+<li><a href='edit/' > Редактировать страницу</a></li>
+<li><a href='delete/' > Удалить страницу</a></li>
+</ul>
+<hr />
+</body>
+</html>

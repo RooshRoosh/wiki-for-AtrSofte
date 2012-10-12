@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% if title %}{{title}}{% else %}Добавление новой страцины{% endif %}
+</title>
+</head>
+{% if error %}<h3>*Ошибка! {{error}}</h3> {% endif %}
+<body>
+<table>
+<form action="" method="POST">{% csrf_token %}
+<tr>
+<td>
+Заголовок*
+</td>
+<td><input type="text" name="title" value="{{title}}"/></td>
+</tr>
+{% if not text or error %}
+<tr>
+<td>
+Url(необязательно)
+</td>
+<td><input type="text" name="slug" value="{{slug}}"/></td>
+</tr>
+{% endif %}
+<tr>
+<td>
+Контент*
+</td>
+<td>
+<textarea name="text">{{text}}</textarea>
+</td>
+</tr>
+<tr><td><input type="submit" value="save"/></td></tr>
+</form>
+</table>
+</body>
+</html>
